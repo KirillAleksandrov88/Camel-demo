@@ -9,13 +9,16 @@ public class Application {
         CamelContext context = new DefaultCamelContext();
         context.addRoutes(new RouteBuilder() {
             public void configure() {
-                from("file:data/inbox?noop=true")
-                        .to("file:data/outbox");
+               String sours = "file:data/inbox?noop=true";
+               String destination = "file:data/outbox";
+               from (sours).to(destination).log("Файл ${file:absolute.path} перемещается в директорию " + destination);
+
             }
         });
         context.start();
         Thread.sleep(10000);
         context.stop();
+
     }
 
 }

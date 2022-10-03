@@ -22,7 +22,7 @@ public class TestClass {
             }
         });
         context.start();
-        Thread.sleep(15000);
+        Thread.sleep(10000);
         context.stop();
     }
 }
