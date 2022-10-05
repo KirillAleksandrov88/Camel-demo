@@ -9,9 +9,9 @@ public class Application {
         CamelContext context = new DefaultCamelContext();
         context.addRoutes(new RouteBuilder() {
             public void configure() {
-               String sours = "file:data/inbox?noop=true";
-               String destination = "file:data/outbox";
-               from (sours).to(destination).log("Файл ${file:absolute.path} перемещается в директорию " + destination);
+                String sours = "file:Camel-file-input?noop=true";
+                String destination = "file:Camel-file-output";
+                from (sours).to(destination).log("Файл ${file:absolute.path} перемещается в директорию " + destination);
 
             }
         });
